@@ -36,7 +36,7 @@ nav a {
 }
 
 nav a:hover {
-  color: rgb(118, 226, 133);
+  color: orange;
 }
 /* --- end header nav styling ----------------------*/
 
@@ -56,7 +56,7 @@ nav a:hover {
   /*  margin: 20px; */
   background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.178),
+      rgba(0, 0, 0, 0.336),
       rgba(0, 0, 0, 0.637)
     ),
     url("ali.jpg");
@@ -90,7 +90,7 @@ nav a:hover {
   width: 40vw;
   height: 20vw;
   padding: 20px;
-  font-size: 2vh;
+  font-size: 1.5vw;
   border-radius: 10px;
   line-height: 30px;
 }
@@ -98,19 +98,18 @@ nav a:hover {
 .css-typing p {
     border-right: .15em solid orange;
    color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 20px;
     white-space: nowrap;
     overflow: hidden;
   }
   .css-typing p:nth-child(1) {
     width: 7.3em;
-    -webkit-animation: type 4s steps(300, end);
-    animation: type 2s steps(300, end);
+    -webkit-animation: type 4s steps(20, end);
+    animation: type 4s steps(20, end);
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
   }
   
-
   
   @keyframes type {
     0% {
@@ -124,19 +123,6 @@ nav a:hover {
     }
   }
   
-  @-webkit-keyframes type {
-    0% {
-      width: 0;
-    }
-    99.9% {
-      border-right: .15em solid orange;
-    }
-    100% {
-      border: none;
-    }
-  }
-  
-
 /* --- end home section styling ----------------------*/
 
 /* --- start about  section styling ----------------------*/
@@ -157,6 +143,8 @@ nav a:hover {
   justify-content: center;
 }
 .card {
+    display: flex;
+    flex-direction: column;
   margin-top: 0px;
   margin-bottom: 30px;
   justify-content: center;
@@ -178,8 +166,8 @@ nav a:hover {
 }
 
 .work {
-  width: 40%;
-  height: 500px;
+  width: 30vw;
+  height:30vw;
   margin: 30px;
   background-size: cover;
   color: #fff;
@@ -188,6 +176,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  box-shadow: 4px 4px rgb(170, 93, 21), -3px -3px .5em #333;
 }
 
 /* ---start contact  section styling ----------------------*/
@@ -225,7 +214,7 @@ input[type="submit"] {
 
 /* When moving the mouse over the submit button, add a darker green color */
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: orange;
 }
 
 /* Add a background color and some padding around the form */
@@ -249,13 +238,16 @@ input[type="submit"]:hover {
   }
   .me {
     width: 90%;
-    height: 80vh;
+    height: 500px;
     margin-right: 5%;
     margin-left: 5%;
+    margin-top: 100px;
+    z-index: 1;
+
   }
   .side {
     width: 60vw;
-    height: 70vh;
+    height: 10vh;
     
   }
 
@@ -264,12 +256,31 @@ input[type="submit"]:hover {
     position: relative;
   }
   .intro{
-    width: 70vw;
-    height: 30vw;
 
+    width: 90vw;
+    height: 30vw;
+    background-color: rgba(51, 51, 51, 0.609);
+    position: absolute;
+    top: 100px;
+    z-index: 2;
+    font-size: 1.5vw;
+
+
+  }
+  .m {
+      font-size: 2vw;
+  }
+
+  nav {
+      width: 100vw;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
   }
 
   header {
+    width: 100vw;
+
     display: flex;
     margin-left: 0px;
     margin-right: 0px;
@@ -295,8 +306,16 @@ input[type="submit"]:hover {
     justify-content: center;
   }
 
+
   .about {
     font-size: 1rem;
     line-height: 1.6rem;
   }
+  .work {
+    width: 80vw;
+    height:50vw;}
+    .OurServices {
+        display: flex;
+        flex-wrap: wrap;
+      }
 }
