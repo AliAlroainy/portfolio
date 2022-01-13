@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="syle.css" >
     <title>protofolio</title>
 </head>
-<body>
+<body >
 
     <!---------**************-----------header section start -------***********--------------->
     <header style="margin-top: 0;">
@@ -35,7 +35,7 @@
             <a href="#about">about</a>
             <a href="#services">services</a>
             <a href="#contact">contact</a>
-            
+            <img onclick="lightMood()" width="30" height="30" src="bb.png"> 
             </div>
 
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -213,33 +213,41 @@
         <div>
            
 
-            <div id="ln" style="display: flex; justify-content: center ; flex-wrap: wrap;">
+            <div id="ln" style="display: flex; justify-content: center ; flex-wrap: wrap;" >
         
-          <a href="https://www.behance.net/gallery/129937041/welcome-KSA-website/modules/736219735"> <div class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('work/1.png') ;" >
+          <a onmouseover="dmmMk()" onmouseleave="dmk()" href="https://www.behance.net/gallery/129937041/welcome-KSA-website/modules/736219735"> <div id="work" class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('work/1.png') ;" >
                 family host 
-                <div class="dtl"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, molestiae.</div>
-            </div>
-        </a> 
-           <a href="https://www.behance.net/gallery/134995813/eTrikeCo"><div class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('work/2.png') ;">
-                Etricko
+                <div class="dtl" id="dtll"> uiux family hostiny site .. to host people from out side in family home .. <h2 style="color: white;">click for view</h2> </div>
             </div>
         </a> 
 
-        <a href="https://www.behance.net/gallery/129935479/space-site?tracking_source=project_owner_other_projects">
+           <a href="https://www.behance.net/gallery/134995813/eTrikeCo"><div class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('work/2.png') ;">
+                Etricko
+                <div class="dtl" id="dtll"> uiux bick store site .. it's redsign to the main site to get better ux .. <h2 style="color: white;">click for view</h2> </div>
+            </div>
+        </a> 
+
+        <a  href="https://www.behance.net/gallery/129935479/space-site?tracking_source=project_owner_other_projects">
             <div class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('work/3.png') ;">
                 space Site
+                <div class="dtl" id="dtll"> uiux space  site .. to imagination projact to perveiw future .. <h2 style="color: white;">click for view</h2> </div>
+
             </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/129933741/coffee-lovers-website-alpha">
+            <a  href="https://www.behance.net/gallery/129933741/coffee-lovers-website-alpha">
             <div class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('work/4.png') ;">
                 coffee host
+                <div class="dtl" id="dtll"> uiux family coffee lover site .. to host people from around the world how loves coffee .. <h2 style="color: white;">click for view</h2> </div>
+
             </div>
         </a>
 
-        <a href="https://www.behance.net/gallery/129936365/Taiz-university-journal?tracking_source=project_owner_other_projects">
+        <a  href="https://www.behance.net/gallery/129936365/Taiz-university-journal?tracking_source=project_owner_other_projects">
             <div class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('work/5.png') ;">
                 Taiz Jurnal
+                <div class="dtl" id="dtll"> taiz journal site .. prototype from ofor the research site to taiz university .. <h2 style="color: white;">click for view</h2> </div>
+
             </div>
             </a>
 
@@ -255,7 +263,7 @@
     <!---------**************-----------contact section start -------***********------------------------>
 
     <section id="contact">
-        <div style="display: flex; justify-content: flex-start; align-items: center; margin: 20px; ">
+        <div id="fm" style="display: flex; justify-content: flex-start; align-items: center; margin: 10px; width: 50vw; ">
         <h1 style="color: #fff;padding: 10px; border-top: 2px solid rgb(17, 197, 92);border-right: 2px solid rgb(17, 197, 92); ">contact me</h1>
     </div>
 
@@ -263,10 +271,14 @@
             <form action="#">
           
               <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+              <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+              <br/>
+              <div style="font-size: 16; color: orangered;" id="fname-err"></div>
           
               <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+              <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+              <br/>
+              <div style="font-size: 16; color: orangered;" id="lname-err"></div>
           
               <label for="country">Country</label>
               <select id="country" name="country">
@@ -276,8 +288,9 @@
               </select>
           
               <label for="subject">Subject</label>
-              <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-          
+              <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
+              <br/>
+              <div style="font-size: 16; color: orangered;" id="subject-err"></div>
               <input type="submit" value="Submit">
           
             </form>
