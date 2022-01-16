@@ -9,19 +9,50 @@ function myFunction() {
 
  function dmmMk(){
 
-    document.getElementById("dtll").style.display = "block";
-    
-     
+  document.getElementById("dtll").style.display = "block";
+       
  // background-color: rgba(0, 0, 0, 0.246);
  }
 
  function dmk(){
 
     document.getElementById("dtll").style.display = "none";
-    
      
  // background-color: rgba(0, 0, 0, 0.246);
  }
+
+ function dmmMk1(){
+    document.getElementById("dtll1").style.display = "block";       
+   }
+  
+   function dmk1(){
+      document.getElementById("dtll1").style.display = "none"; 
+   }
+
+   
+ function dmmMk2(){
+    document.getElementById("dtll2").style.display = "block";       
+   }
+  
+   function dmk2(){
+      document.getElementById("dtll2").style.display = "none"; 
+   }
+   
+ function dmmMk3(){
+    document.getElementById("dtll3").style.display = "block";       
+   }
+  
+   function dmk3(){
+      document.getElementById("dtll3").style.display = "none"; 
+   }
+   
+ function dmmMk4(){
+    document.getElementById("dtll4").style.display = "block";       
+   }
+  
+   function dmk4(){
+      document.getElementById("dtll4").style.display = "none"; 
+   }
 
  function lightMood(){
 
