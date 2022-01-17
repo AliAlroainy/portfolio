@@ -24,6 +24,20 @@ body {
   background-attachment: fixed;
 }
 
+
+body::-webkit-scrollbar {
+  width: 1rem;
+  
+
+}
+body::-webkit-scrollbar-track {
+  background: #333;
+  
+}
+body::-webkit-scrollbar-thumb {
+  height: 0.5rem;
+  background: rgba(255, 166, 0, 0.246);
+}
 /* --- start header nav styling ----------------------*/
 /*
 .topnav {
@@ -252,7 +266,7 @@ nav .icon {
 
 .bbt:after {
   content: "";
-  background-color: #4cff82;
+  background-color: #15a741;
   color: rgb(255, 255, 255);
 
   width: 100%;
