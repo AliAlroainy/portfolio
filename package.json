@@ -1,0 +1,23 @@
+{
+  "name": "pv1",
+  "version": "1.0.0",
+  "description": "backend protfolio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AliAlroainy/portfolio.git"
+  },
+  "author": "ali alroainy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AliAlroainy/portfolio/issues"
+  },
+  "homepage": "https://github.com/AliAlroainy/portfolio#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  }
+}
