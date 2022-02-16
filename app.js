@@ -3,9 +3,10 @@ const { render } = require('express/lib/response');
 const app = express();
 
 app.set('view engine','ejs');
-app.set('views','views');
 
-app.use('views',express.static(__dirname +'views/css'));
+app.use(express.static('public'));
+
+
 
 app.get("/", (req,res)=>{
     res.render("index");
