@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
-await mongoose.connect('mongodb://localhost/my_database');
+mongoose.connect('mongodb://localhost:27017/my_database');
 
-const Schema = mongoose.Schema;
 
-const personalInfo = new Schema({
-  name: String,
-  mainword: String,
-  description: Date
+mongoose.connection.on("error", console.error.bind(console, "connection error: "));
+mongoose.connection.once("open", function () {
+  console.log("Connected successfully");
 });
 
-exports.database = database;
+module.exports = mongoose;
