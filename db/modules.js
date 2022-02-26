@@ -13,6 +13,9 @@ const experSchema = new Schema({
   date: {
     type: Date,
   },
+  active: {
+    type: Boolean ,
+  },
 });
 
 const servSchema = new Schema({
@@ -27,13 +30,14 @@ const servSchema = new Schema({
   description: {
     type: String,
   },
-
+  active: {
+    type: Boolean,
+  },
 });
 
 const PersonalSchema = new Schema({
   name: {
     type: String,
-    required: true,
   },
   img: {
     type: String,
@@ -42,6 +46,9 @@ const PersonalSchema = new Schema({
     type: String,
   },
   description: {
+    type: String,
+  },
+  job: {
     type: String,
   },
 });
@@ -62,6 +69,9 @@ const contaSchema = new Schema({
   date: {
     type: Date,
   },
+  active: {
+    type: Boolean,
+  },
 
 });
 
@@ -70,6 +80,7 @@ const workSchema = new Schema({
     type: String,
     required: true,
   },
+
   img: {
     type: String,
   },
@@ -77,12 +88,23 @@ const workSchema = new Schema({
   description: {
     type: String,
   },
+
+  demo: {
+    type: String,
+  },
+  active: {
+    type: Boolean,
+  },
+
 });
 
 const skillsSchema = new Schema({
   name: {
     type: String,
     required: true,
+  },
+  active: {
+    type: Boolean,
   },
 });
 
