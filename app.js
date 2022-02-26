@@ -70,8 +70,6 @@ app.get('/cv',(req,res)=>{
 // --------------------------   database post 
 
 app.post("/add_info", async (req, resp) => {
-    
-
 
     // const personal = new db.personal(request.body);
   
@@ -82,9 +80,9 @@ app.post("/add_info", async (req, resp) => {
     //   response.status(500).send(error);
     // }
 
-    db.personal.create(request.body);
-    //console.log(req);
-
+    db.personal.create(req.body);
+    alert('data added saccessfully');
+    console.log(req.body);
 
 });
 
