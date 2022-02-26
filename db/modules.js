@@ -36,10 +36,13 @@ const servSchema = new Schema({
 });
 
 const PersonalSchema = new Schema({
-  name: {
+
+ 
+  img: {
     type: String,
   },
-  img: {
+
+  pname: {
     type: String,
   },
   sentence: {

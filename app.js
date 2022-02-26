@@ -81,7 +81,7 @@ app.post("/add_info", async (req, resp) => {
     // }
 
     db.personal.create(req.body);
-    alert('data added saccessfully');
+    console.log('personal data added saccessfully');
     console.log(req.body);
 
 });
