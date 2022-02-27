@@ -84,9 +84,11 @@ const workSchema = new Schema({
     required: true,
   },
 
-  img: {
-    type: String,
-  },
+  img:
+    {
+        data: Buffer,
+        contentType: String
+    },
 
   description: {
     type: String,

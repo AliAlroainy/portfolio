@@ -4,8 +4,12 @@ const app = express();
 require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
+const path = require('path');
+const fs = require("fs");
 const { auth } = require('express-openid-connect');
 const methodOverride = require('method-override');
+const multer = require("multer");
+
 // const { requiresAuth } = require('express-openid-connect');
 
 
@@ -33,6 +37,20 @@ app.use(bodyParser.json());
 //app.use(sucursalRoutes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+// SET STORAGE
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+ 
+var upload = multer({ storage: storage })
+ 
 
 
 app.use(express.static('public'));
@@ -127,9 +145,36 @@ app.post("/add_serv", async (request, response) => {
 app.post("/add_works", async (request, response) => {
 
     db.works.create(request.body);
-    console.log('work data added saccessfully');
-    console.log(request.body);
-});
+     console.log('skill data added saccessfully');
+    resp.write(`
+        <script>
+            window.location.href = '/dashboard';
+        </script>  
+        `)
+    });
+
+    app.post("/add_works",upload.single('workimg'),(req,res)=>{
+        var img = fs.readFileSync(req.file.path);
+        var encode_img = img.toString('base64');
+        var final_img = {
+            contentType:req.file.mimetype,
+            image:new Buffer(encode_img,'base64')
+        };
+
+        db.works.create(final_img,function(err,result){
+            if(err){
+                console.log(err);
+            }else{
+                console.log(result.img.Buffer);
+                console.log("Saved To database");
+                res.contentType(final_img.contentType);
+                res.send(final_img.image);
+            }
+        })
+        //db.works.create(request.body);
+
+    })
+
 
 app.post("/add_contact", async (request, response) => {
 
@@ -138,24 +183,23 @@ app.post("/add_contact", async (request, response) => {
     console.log(request.body);
 });
 
+
 // --------------------------   database get 
-
-app.get("/vew_info", async (request, response) => {
-
-    db.personal.find(docs);
-    res.render("list", {
-        data: docs
-    });
-});
-
-
-
-
-// app.use(function(req, res) {
-//     res.render("404");
+// app.get("/vew_info", async (request, response) => {
+//     db.personal.find(docs);
+//     res.render("list", {
+//         data: docs
 //     });
+// });
+
+
+
+
+app.use(function(req, res) {
+    res.render("404");
+    });
 
 app.listen(port);
-console.log('server started');
+console.log(`server started in port : ${port}`);
 
 
