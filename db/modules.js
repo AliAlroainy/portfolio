@@ -10,12 +10,24 @@ const experSchema = new Schema({
   com: {
     type: String,
   },
+  loc: {
+    type: String,
+  },
   date: {
     type: Date,
   },
   active: {
     type: Boolean ,
   },
+});
+
+const photoSchema = new Schema({
+  photo: {
+    type: String,
+  },
+  cv: {
+    type: String,
+  }
 });
 
 const servSchema = new Schema({
@@ -37,7 +49,6 @@ const servSchema = new Schema({
 
 const PersonalSchema = new Schema({
 
- 
   img: {
     type: String,
   },
@@ -57,46 +68,34 @@ const PersonalSchema = new Schema({
 });
 
 const contaSchema = new Schema({
-  name: {
+  link: {
     type: String,
-    required: true,
-  },
-  email: {
-    type: String,
+  
   },
 
-  message: {
+  linkname : {
     type: String,
-  },
-
-  date: {
-    type: Date,
-  },
-  active: {
-    type: Boolean,
-  },
+  }
 
 });
 
 const workSchema = new Schema({
-  name: {
+  pname: {
     type: String,
-    required: true,
   },
 
-  img:
-    {
-        data: Buffer,
-        contentType: String
+  pimg: {
+      type: String,
     },
 
   description: {
     type: String,
   },
 
-  demo: {
+  url: {
     type: String,
   },
+
   active: {
     type: Boolean,
   },
@@ -118,6 +117,7 @@ module.exports = {
   skills: mongoose.model("skills", skillsSchema),
   contact: mongoose.model("conta", contaSchema),
   personal: mongoose.model("Personal", PersonalSchema),
+  photos : mongoose.model("photo",  photoSchema),
   works: mongoose.model("work", workSchema)
 
 }

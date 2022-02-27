@@ -5,25 +5,9 @@
                           <div class="card h-100">
                             <div class="card-body">
                               <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Experience</i></h6>
-                                <!--ssss-->
-                                <div id="ittem" style="background-color: #eeeded; padding: 6px; margin: 3px;">  
-                                  <strong >UX Designer</strong>
-                                  <hr/>
-                                  <div class=" mb-5" style="height: 55px ; padding: 3px;">
-                                    <div><i class="bi bi-building"></i><small>Apple</small></div> 
-                                    <div><i class="bi bi-geo-alt"></i><small>New Yourk</small></div> 
-                                   <div><i class="bi bi-calendar-week"></i><small>2018-2020</small></div> 
-                                 <div class="d-flex flex-row mt-2 w-25" style="border-top: solid 1px rgba(141, 140, 140, 0.609);">
-                                    <div id="dlt"   style="width: 20px; height: 20px; cursor: pointer;"> <i class="bi bi-trash"></i> </div>
-                                    <div id="#"   style="width: 20px; height: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">  <i class="bi bi-pencil-square"></i> </div>
-                                    <i class="bi bi-check-circle"></i>
+                                
 
-                                  </div> 
-                                  </div>
-                                </div>
-                               <!--eee-->
-
-                               <br/>
+                          
                              
 
                              <!--ssss-->
@@ -43,6 +27,29 @@
                             </div>
                            <!--eee-->
 
+                           <br/>
+
+                           <% exp.forEach(el => { %>
+
+                             <!--ssss-->
+                             <div id="ittem" style="background-color: #eeeded; padding: 6px; margin: 3px;">  
+                              <strong > <%= el.name %>  </strong>
+                              <hr/>
+                              <div class=" mb-5" style="height: 55px ; padding: 3px;">
+                                <div><i class="bi bi-building"></i><small> <%= el.com %> </small></div> 
+                                <div><i class="bi bi-geo-alt"></i><small> <%= el.loc %>  </small></div> 
+                               <div><i class="bi bi-calendar-week"></i><small> <%= el.date %> </small></div> 
+                             <div class="d-flex flex-row mt-2 w-25" style="border-top: solid 1px rgba(141, 140, 140, 0.609);">
+                                <div id="dlt"   style="width: 20px; height: 20px; cursor: pointer;"> <i class="bi bi-trash"></i> </div>
+                                <div id="#"   style="width: 20px; height: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">  <i class="bi bi-pencil-square"></i> </div>
+                                <i class="bi bi-check-circle"></i>
+                              </div> 
+                              </div>
+                            </div>
+                           <!--eee-->
+                            
+                           <% }) %>
+
                               <script>
                                 $('#dlt').click(function(){
                                   array.forEach(element => {
@@ -56,7 +63,7 @@
                               <div class="row">
                                 <div class="col-sm-12">
                                   <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#experModal" >
   <i class="bi bi-plus-circle"></i>
   add
  </button>

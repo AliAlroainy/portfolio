@@ -8,6 +8,7 @@ const fs = require("fs");
 const { auth } = require('express-openid-connect');
 const methodOverride = require('method-override');
 const multer = require("multer");
+var formidable = require('formidable');
 
 // const { requiresAuth } = require('express-openid-connect');
 
@@ -85,8 +86,17 @@ app.get("/dashboard",  (req,res)=>{
       if (personalErr) return;
       db.skills.find({},(skillsErr,skillsData)=>{
         if (skillsErr) return;
-        res.render("dashbord",{personal:personalData[0] , skills:skillsData});
+        db.works.find({},(worksErr,worksData)=>{
+         if (worksErr) return;
+         db.photos.find({},(photoErr,photoData)=>{
+            if (photoErr) return;
+            db.exper.find({},(experErr,experData)=>{
+                if (experErr) return;
+        res.render("dashbord",{personal:personalData[0] , skills:skillsData , works : worksData , photo :photoData , exp : experData});
       })
+    })
+    })
+    })
       
   })
     
@@ -131,8 +141,14 @@ app.post("/add_exper", async (request, response) => {
 
     db.exper.create(request.body);
     console.log('experinces data added saccessfully');
-    console.log(request.body);
+    response.write(`
+        <script>
+            window.location.href = '/dashboard';
+        </script>
+        
+        `);
 });
+
 
 app.post("/add_serv", async (request, response) => {
 
@@ -141,38 +157,116 @@ app.post("/add_serv", async (request, response) => {
     console.log(request.body);
 });
 
-app.post("/add_works", async (request, response) => {
+// app.post("/add_works", async (request, response) => {
 
-    db.works.create(request.body);
-     console.log('skill data added saccessfully');
-    resp.write(`
-        <script>
-            window.location.href = '/dashboard';
-        </script>  
-        `)
+//     db.works.create(request.body);
+//      console.log('skill data added saccessfully');
+//     resp.write(`
+//         <script>
+//             window.location.href = '/dashboard';
+//         </script>  
+//         `)
+//     });
+
+//     app.post("/add_works",upload.single('workimg'),(req,res)=>{
+//         var img = fs.readFileSync(req.file.path);
+//         var encode_img = img.toString('base64');
+//         var final_img = {
+//             contentType:req.file.mimetype,
+//             image:new Buffer(encode_img,'base64')
+//         };
+
+//         db.works.create(final_img,function(err,result){
+//             if(err){
+//                 console.log(err);
+//             }else{
+//                 console.log(result.img.Buffer);
+//                 console.log("Saved To database");
+//                 res.contentType(final_img.contentType);
+//                 res.send(final_img.image);
+//             }
+//         })
+//         //db.works.create(request.body);
+
+//     })
+
+
+
+//-------------------------------------------------------------------############################
+
+app.post('/add_works', (req, res) => {
+
+    var form = new formidable.IncomingForm();
+    var pname, pimg, description, url;
+
+    form.parse(req, function(err, fields, files) {
+        if (fields) {
+            pname = fields.pname;
+            description = fields.description;
+            url = fields.url;
+        }
+
+        if (files) {
+
+            var Image = getFileInfo(files.pimg, '\\public\\uploads\\images\\');
+           // var CV = getFileInfo(files.cv, '\\public\\uploads\\cv\\');
+
+            fs.rename(Image.oldPath, Image.newPath, () => {});
+            //fs.rename(CV.oldPath, CV.newPath, () => {});
+        }
+        db.works.create({
+            pname: pname,
+            description: description,
+            url: url,
+            pimg: Image.name
+           // cv: CV.name
+        });
+        res.redirect('/dashboard');
     });
 
-    app.post("/add_works",upload.single('workimg'),(req,res)=>{
-        var img = fs.readFileSync(req.file.path);
-        var encode_img = img.toString('base64');
-        var final_img = {
-            contentType:req.file.mimetype,
-            image:new Buffer(encode_img,'base64')
-        };
+});
 
-        db.works.create(final_img,function(err,result){
-            if(err){
-                console.log(err);
-            }else{
-                console.log(result.img.Buffer);
-                console.log("Saved To database");
-                res.contentType(final_img.contentType);
-                res.send(final_img.image);
-            }
-        })
-        //db.works.create(request.body);
 
-    })
+app.post('/add_img', (req, res) => {
+
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function(err, fields, files) {
+      
+
+        if (files) {
+
+            var Image = getFileInfo(files.photo, '\\public\\uploads\\images\\');
+            var CV = getFileInfo(files.cv, '\\public\\uploads\\cv\\');
+
+            fs.rename(Image.oldPath, Image.newPath, () => {});
+            fs.rename(CV.oldPath, CV.newPath, () => {});
+        }
+        db.photos.create({
+            
+            photo: Image.name,
+             cv: CV.name
+        });
+        res.redirect('/dashboard');
+    });
+
+});
+
+function getFileInfo(file, destination) {
+    var extention = file.originalFilename.split(".").pop();
+    var fileName = Date.now() + "-" + (Math.random() * 1e20) + "." + extention;
+    var oldPath = file.filepath;
+    var newPath = __dirname + destination + fileName;
+
+    return {
+        extention: extention,
+        name: fileName,
+        oldPath: oldPath,
+        newPath: newPath
+    }
+}
+
+//------------------------------------------------------------------###################
 
 
 app.post("/add_contact", async (request, response) => {

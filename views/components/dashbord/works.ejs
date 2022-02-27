@@ -8,6 +8,8 @@
                            
                                  <!--eee-->
     
+
+
                                     <!--ssss-->
                              
                                     <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -37,6 +39,34 @@
 
                                    <!--eee-->
 
+
+                                   <% works.forEach(el => { %>
+
+                                                   <!--ssss-->
+                             
+                                                   <div class="row row-cols-1 row-cols-md-2 g-4">
+
+                                                    <div class="col m-3">
+                                                      <div class="card h-100 ">
+                                                        <img src="/public/uploads/images/<%= el.pimg %>" class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                          <h5 class="card-title"> <%= el.pname %> </h5>
+                                                          <p class="card-text"><%= el.description %> </p>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                          <i class="bi bi-check-circle"></i>
+                                                          <i class="bi bi-trash"></i>
+                                                          <i class="bi bi-pencil-square"></i>
+                                                          <br/>
+                                                          <small class="text-muted">Last updated 3 mins ago</small>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                    
+                                                   <!--eee-->
+                                    
+                                   <% }) %>
 
                                    
                                 <div class="row">
