@@ -60,7 +60,23 @@ const port = process.env.PORT || 3000 ;
 app.get("/", (req,res)=>{
 
 
-    res.render("index");
+    db.personal.find({},(personalErr,personalData)=>{
+        if (personalErr) return;
+        db.skills.find({},(skillsErr,skillsData)=>{
+          if (skillsErr) return;
+          db.works.find({},(worksErr,worksData)=>{
+           if (worksErr) return;
+           db.photos.find({},(photoErr,photoData)=>{
+              if (photoErr) return;
+              db.exper.find({},(experErr,experData)=>{
+                  if (experErr) return;
+          res.render("index",{personal:personalData[0] , skills:skillsData , works : worksData , photo :photoData , exp : experData});
+        })
+      })
+      })
+      })
+        
+    })
 
 });
 
@@ -116,7 +132,6 @@ app.post("/add_info", async (req, resp) => {
     db.personal.updateOne({},req.body,{returnDocument: 'after'},()=>{});
     resp.write(`
         <script>
-            alert("Data Updated Successfully");
             window.location.href = '/dashboard';
         </script>
         

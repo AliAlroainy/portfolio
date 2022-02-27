@@ -2,9 +2,18 @@
 <!---------**************-----------home section start -------***********------------------------>
 <section class="home">
         
-    <div class="me" >
+    <div class="me"  style=' background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.336),
+        rgba(0, 0, 0, 0.637)
+      ),
+      url("/public/uploads/images/<%= photo[photo.length - 1].photo %>"); width: 40vw;
+  height: 80vh;
+  /*  margin: 20px; */
+ 
+  background-size: cover;' >
 
-        <h4 id="num" style="color: #fff;"> [ ] Simple Things can make big diffrent </h4>
+        <h4 id="num" style="color: #fff;">  <%= personal.sentence %> </h4>
 
     </div>
 
@@ -13,14 +22,14 @@
         <div class="intro"  >
         <p style="color: rgba(255, 248, 248, 0.637);" >Hey , there<span> &#129497;</span></p> 
         <br/>
-        <h3 class="css-typing" style="color: rgba(253, 253, 253, 0.705);"><p>I'm Ali Alroainy</p></h3>
+        <h3 class="css-typing" style="color: rgba(253, 253, 253, 0.705);"><p>I'm  <%= personal.pname %> </p></h3>
         <div>
             <p  style="color: rgba(255, 248, 248, 0.856);">
-                UIUX Designer and Web Developer ,my Job is to make things to look better ,also to let the user experince be the best when they using your product ..
+                <%= personal.description %>
             </p>
         
           </div>
-         <a href="/cv"><button class="bbt">my cv</button></a> 
+         <a href="/public/uploads/cv/<%= photo[photo.length - 1].cv %>"><button class="bbt">my cv</button></a> 
         
     </div>
     </div>
