@@ -340,7 +340,7 @@ h6 span{
 												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
                         <i class="bi bi-lock " style="position: absolute; left: 15px; top: 10px;"></i>			
                       								</div>
-											<a href="" id="log" class="btn mt-4">Login</a>
+											<a href="#" id="log" class="btn mt-4" onclick="login();">Login</a>
                             				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
 				      					</div>
 			      					</div>
@@ -348,22 +348,21 @@ h6 span{
 
 
                     <script>
-                      var user = document.getElementById('logemail').value;
-                      var pass = document.getElementById('logpass').value;
+                      
 
                       var lg = document.getElementById('log');
 
-                      lg.addEventListener('click',()=>{
-                        
-                        if( user == "ali" && pass == "ali"){
+                      function login()
+                      {
+                        var user = document.getElementById('logemail').value;
+                      var pass = document.getElementById('logpass').value;
+                      if( user == "ali" && pass == "ali")
+                        location.href = "/dashboard";
+                        else
+                        alert('try again');
 
-                          lg.setAttribute("href","/dashboard");
-                          
-                        }else{
-                          alert('try again');
-                        }
-
-                      })
+                      }
+                      
 
                       // $('#log').click(function(){
    

@@ -102,9 +102,8 @@ const workSchema = new Schema({
 });
 
 const skillsSchema = new Schema({
-  name: {
+  sname: {
     type: String,
-    required: true,
   },
   active: {
     type: Boolean,

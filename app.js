@@ -57,7 +57,15 @@ app.get("/login", (req,res)=>{
 
 app.get("/dashboard",  (req,res)=>{
   //  res.send(JSON.stringify(req.oidc.user));
-    res.render("dashbord");
+  db.personal.find({},(personalErr,personalData)=>{
+      if (personalErr) return;
+      db.skills.find({},(skillsErr,skillsData)=>{
+        if (skillsErr) return;
+        res.render("dashbord",{personal:personalData[0] , skills:skillsData});
+      })
+      
+  })
+    
 });
 
 
@@ -71,44 +79,57 @@ app.get('/cv',(req,res)=>{
 
 app.post("/add_info", async (req, resp) => {
 
-    // const personal = new db.personal(request.body);
-  
-    // try {
-    //   await personal.save();
-    //   response.send(personal);
-    // } catch (error) {
-    //   response.status(500).send(error);
-    // }
-
-    db.personal.create(req.body);
-    console.log('personal data added saccessfully');
-    console.log(req.body);
+    db.personal.updateOne({},req.body,{returnDocument: 'after'},()=>{});
+    resp.write(`
+        <script>
+            alert("Data Updated Successfully");
+            window.location.href = '/dashboard';
+        </script>
+        
+        `);
 
 });
 
-app.post("/add_skills", async (request, response) => {
+app.post("/add_skills", async (req, resp) => {
 
-    db.skills.create(request.body);
+    db.skills.create(req.body);
+    console.log('skill data added saccessfully');
+    resp.write(`
+        <script>
+            alert("Data Added Successfully");
+            window.location.href = '/dashboard';
+        </script>
+        
+        `);
+
 });
 
 app.post("/add_exper", async (request, response) => {
 
     db.exper.create(request.body);
+    console.log('experinces data added saccessfully');
+    console.log(request.body);
 });
 
 app.post("/add_serv", async (request, response) => {
 
     db.serv.create(request.body);
+    console.log('serveces data added saccessfully');
+    console.log(request.body);
 });
 
 app.post("/add_works", async (request, response) => {
 
     db.works.create(request.body);
+    console.log('work data added saccessfully');
+    console.log(request.body);
 });
 
 app.post("/add_contact", async (request, response) => {
 
     db.contact.create(request.body);
+    console.log('contact data added saccessfully');
+    console.log(request.body);
 });
 
 // --------------------------   database get 

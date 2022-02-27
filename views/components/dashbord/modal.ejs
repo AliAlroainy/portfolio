@@ -11,12 +11,12 @@
         
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">name</span>
-          <input type="text" class="form-control"  aria-label="name"  name="pname" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" value="<%= personal.pname %> "   aria-label="name"  name="pname" aria-describedby="basic-addon1">
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">job</span>
-          <input type="text" class="form-control"  aria-label="job" name="job" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" value="<%= personal.job %> "   aria-label="job" name="job" aria-describedby="basic-addon1">
         </div>
         <!-- <label for="basic-url" class="form-label">photo</label>
         <div class="input-group mb-3">
@@ -25,7 +25,7 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">sentence</span>
-          <input type="text" class="form-control"  aria-label="sentence" name="sentence" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" value="<%= personal.sentence %> "  aria-label="sentence" name="sentence" aria-describedby="basic-addon1">
         </div>
   
         
@@ -33,7 +33,85 @@
         
         <div class="input-group">
           <span class="input-group-text">description</span>
+          <textarea class="form-control"   aria-label="With textarea" name="description" >
+
+            <%= personal.description %>
+          </textarea>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-secondary" style="background-color: transparent; border: 1px solid #ffeba7;" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit"  class="btn btn-primary" >submit </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--end personal model-->
+
+
+<!-- skills Modal -->
+<form method="post" action="/add_skills" class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add skills</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">skill_Name</span>
+          <input type="text" class="form-control"   name="sname" aria-describedby="basic-addon1">
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-secondary" style="background-color: transparent; border: 1px solid #ffeba7;" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" >submit </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--end skill model-->
+
+
+
+<!-- works Modal -->
+<form method="post" action="/add_works" class="modal fade" id="worksModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">project_Name</span>
+          <input type="text" class="form-control"   name="sname" aria-describedby="basic-addon1">
+        </div>
+
+      
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" id="basic-url" name="img" aria-describedby="basic-addon3">
+                </div>
+
+        
+        
+        <div class="input-group">
+          <span class="input-group-text">description</span>
           <textarea class="form-control" aria-label="With textarea" name="description" ></textarea>
+        </div>
+        <br/>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">URL</span>
+          <input type="text" class="form-control"   name="url" aria-describedby="basic-addon1">
         </div>
 
 
@@ -46,12 +124,40 @@
   </div>
 </form>
 
-<!--end personal model-->
+<!--end skill model-->
 
 
 
+<!-- img Modal -->
+<form method="post" action="/add_skills" class="modal fade" id="imgModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">update image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="input-group mb-3">
+          <img src="/public/ali.jpg"  width="100%" height="70%"  aria-describedby="basic-addon1">
+        </div>
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">add new img</label>
+          <input class="form-control" name="img" type="file" id="formFile">
+        </div>
 
 
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-secondary" style="background-color: transparent; border: 1px solid #ffeba7;" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" >submit </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--end img model-->
 
 <!-- Modal -->
 <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
