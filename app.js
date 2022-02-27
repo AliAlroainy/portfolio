@@ -5,6 +5,7 @@ require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
 const { auth } = require('express-openid-connect');
+const methodOverride = require('method-override');
 // const { requiresAuth } = require('express-openid-connect');
 
 
@@ -23,6 +24,7 @@ const { auth } = require('express-openid-connect');
 
 
 app.set('view engine','ejs');
+app.use(methodOverride("_method"));
 app.use("/public", express.static(path.resolve(__dirname + '/public')));
 app.use(express.urlencoded());
 //app.use(express.bodyParser());
@@ -54,6 +56,11 @@ app.get("/login", (req,res)=>{
 
 
 // });
+app.delete('/:id', async(req , res)=>{
+
+    await db.skills.findOneAndDelete(req.params.sname);
+    res.redirect("/dashboard");
+});
 
 app.get("/dashboard",  (req,res)=>{
   //  res.send(JSON.stringify(req.oidc.user));
@@ -96,7 +103,6 @@ app.post("/add_skills", async (req, resp) => {
     console.log('skill data added saccessfully');
     resp.write(`
         <script>
-            alert("Data Added Successfully");
             window.location.href = '/dashboard';
         </script>
         
@@ -145,9 +151,9 @@ app.get("/vew_info", async (request, response) => {
 
 
 
-app.use(function(req, res) {
-    res.render("404");
-    });
+// app.use(function(req, res) {
+//     res.render("404");
+//     });
 
 app.listen(port);
 console.log('server started');
