@@ -90,9 +90,11 @@ app.get("/login", (req,res)=>{
 
 
 // });
-app.delete('/:id', async(req , res)=>{
-
-    await db.skills.findOneAndDelete(req.params.sname);
+app.delete('/dashboard/:id', async(req , res)=>{
+    var s = db.skills;
+  //  console.log(req.params.id);
+    await s.findOneAndDelete(req.params.id.replace(/ /g,""));
+   // console.log(s.findById(req.params.id.replace(/ /g,"")));
     res.redirect("/dashboard");
 });
 
