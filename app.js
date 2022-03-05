@@ -55,7 +55,6 @@ var upload = multer({ storage: storage })
 
 app.use(express.static('public'));
 
-const port = process.env.PORT || 3000 ;
 
 app.get("/", (req,res)=>{
 
@@ -308,6 +307,10 @@ app.post("/add_contact", async (request, response) => {
 app.use(function(req, res) {
     res.render("404");
     });
+
+
+
+const port = process.env.PORT || 3000 ;
 
 app.listen(port);
 console.log(`server started in port : ${port}`);
