@@ -19,10 +19,11 @@
              <li > <h4 >Responsive Design</h4></li>
              <li><h4>Visual Design</h4></li>
              <li><h4>Drawing</h4></li>
-             <li><h4>Prototyping</h4></li>
-             <li><h4>Wireframing</h4></li>
-             <li><h4>Usability testing</h4></li>
-             <li><h4>programming</h4></li>
+            
+             <% skills.forEach(element => { %>
+                <li><h4> <%= element.sname %>  </h4></li>
+             <% }) %>
+
          </ul>
      </div>
 
@@ -38,6 +39,12 @@
              <li>
                 <h4>Graphic Designer | Spcilict for solar systems  - 2017-2018</h4> 
              </li>
+
+             <% exp.forEach(element => { %>
+                <li>
+                    <h4> <%= element.name %>  | <%= element.com %>   - <%= element.date %> </h4> 
+                 </li>
+             <% }) %>
 
          </ul>
 

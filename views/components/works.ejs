@@ -45,6 +45,19 @@
         </div>
         </a>
 
+
+        <% works.forEach(element => { %>
+
+           <a onmouseover="dmmMk4()" onmouseleave="dmk4()" href="<%= element.url %>">
+        <div class="work" style="background:  linear-gradient(180deg, rgba(0, 0, 0, 0.178) , rgba(0, 0, 0, 0.637)) ,url('<%= element.pimg %>') ;">
+            <%= element.pname %> 
+            <div class="dtl" id="dtll4"> <%= element.description %>  .. <h2 style="color: white;">click for view</h2> </div>
+
+        </div>
+        </a>
+
+        <% }) %>
+
     </div>
 
     </div>
